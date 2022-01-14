@@ -36,6 +36,7 @@ public class Four{
                             || (line.charAt(i) >= 'a' && line.charAt(i) <= 'z')
                             || (line.charAt(i) >= 'A' && line.charAt(i) <= 'Z');
                     if (start_char == -1) {
+                        // start of a word
                         if(isalnum) {
                             start_char = idx;
                         }
@@ -44,6 +45,7 @@ public class Four{
                         if (!(isalnum)) {
                             boolean found = false;
                             StringBuilder word = new StringBuilder(line.substring(start_char, i));
+                            // to lower cases
                             for(int j = 0; j < word.length(); ++j) {
                                 if(word.charAt(j) >= 'A' && word.charAt(j) <= 'Z') {
                                     word.setCharAt(j, (char)(word.charAt(j) + 'a' - 'A'));
@@ -60,6 +62,7 @@ public class Four{
                             if(!exist) {
                                 int pair_idx = 0;
                                 for(int k = 0; k < wordsList.size(); ++k) {
+                                    // already exists
                                     if(wordsList.get(k).equals(word.toString())) {
                                         freqList.set(k, freqList.get(k) + 1);
                                         found = true;
@@ -71,6 +74,7 @@ public class Four{
                                     wordsList.add(word.toString());
                                     freqList.add(1);
                                 } else if(wordsList.size() > 1) {
+                                    // sort during expanding
                                     for(int n = pair_idx; n >= 0; n--){
                                         if(freqList.get(pair_idx) > freqList.get(n)) {
                                             // swap
@@ -81,9 +85,11 @@ public class Four{
                                     }
                                 }
                             }
+                            // find a new word
                             start_char = -1;
                         }
                     }
+                    // move index
                     idx++;
                 }
             });

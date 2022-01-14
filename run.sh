@@ -11,8 +11,9 @@ if ! [[ $NUM =~ ^[0-9]+$ ]] || [[ $NUM < 1 ]] || [[ $MAX < $NUM ]]; then
 fi
 
 run() {
-  echo "[$NUM] Exercise ${NUM} is running..."
-  echo ""
+  echo "------------------------------------"
+  echo "Exercise ${NUM} is running..."
+  echo "------------------------------------"
   echo ""
   cd "./week0$NUM"
   bash run.sh
