@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-MAX=1
+MAX=2
 for ((i = 1; i <= $MAX; ++i)) do
   echo "[$i] Run Exercise $i;"
 done
@@ -18,7 +18,7 @@ run() {
   bash run.sh
 }
 
-if [[ $NUM == 1 ]]; then
+if [[ $NUM < 3 ]]; then
   run
 else
   echo "Haven't implemented"
