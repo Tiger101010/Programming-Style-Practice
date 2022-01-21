@@ -12,7 +12,7 @@ for ((i = 7; i <= 8; ++i)) do
         FILENAME="Eight.java"
     fi
 
-    java $FILENAME ../pride-and-prejudice.txt
+    java -Xss512m $FILENAME ../pride-and-prejudice.txt
     echo ""
     echo "------------------------------------"
     echo "Task $i ends"
