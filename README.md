@@ -1,3 +1,3 @@
 # Usage
 - click `Run` button
-- input a Exercise number 
+- input an Exercise number 

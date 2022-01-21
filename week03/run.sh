@@ -1,4 +1,4 @@
-for ((i = 4; i <= 6; ++i)) do
+for ((i = 7; i <= 8; ++i)) do
     echo ""
     echo "------------------------------------"
     echo "Task $i is runing..."
@@ -6,12 +6,10 @@ for ((i = 4; i <= 6; ++i)) do
     echo "------------------------------------"
     echo ""
 
-    if [[ $i == 4 ]]; then
-        FILENAME="Four.java"
-    elif [[ $i == 5 ]]; then
-        FILENAME="Five.java"
-    elif [[ $i == 6 ]]; then
-        FILENAME="Six.java"
+    if [[ $i == 7 ]]; then
+        FILENAME="Seven.java"
+    elif [[ $i == 8 ]]; then
+        FILENAME="Eight.java"
     fi
 
     java $FILENAME ../pride-and-prejudice.txt
