@@ -9,6 +9,7 @@ public class Seven {
     /** Clear Version
 
     List<String> stop_words = asList(new String(Files.readAllBytes(Paths.get("../stop_words.txt"))).split(","));
+    
     asList(new String(Files.readAllBytes(Paths.get(args[0])))
             .split("[^a-zA-Z0-9]+"))
             .parallelStream()

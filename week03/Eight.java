@@ -11,10 +11,12 @@ public class Eight {
 
     public static final int RECURSIVE_LIMIT = 1000;
 
+    // count frequency
     public static void count(List<String> words, int idx, int length, List<String> stop_words, HashMap<String, Integer> word_freq){
-
+        // base case
         if(idx == length || idx >= words.size()) return;
 
+        // inductive case
         String word = words.get(idx);
         if(!stop_words.contains(word) && word.length() > 1) {
             if(word_freq.containsKey(word)) {
@@ -23,12 +25,16 @@ public class Eight {
                 word_freq.put(word, 1);
             }
         }
+        // tail recursion
         count(words, idx + 1, length, stop_words, word_freq);
     }
 
-    public static void getWords(List<String> words, String raw_words, int idx, int length) {
-        if(idx >= length || idx >= raw_words.length()) return;
+    // read word character by character
+    public static int getWords(List<String> words, String raw_words, int idx, int length) {
+        // base case
+        if(idx >= length || idx >= raw_words.length()) return idx;
 
+        // inductive case
         StringBuilder word = new StringBuilder();
         char letter = raw_words.charAt(idx);
         while(Character.isLetterOrDigit(letter)) {
@@ -37,22 +43,24 @@ public class Eight {
             letter = raw_words.charAt(idx);
         }
         words.add(word.toString());
-        getWords(words, raw_words, idx + 1, length);
+
+        // tail recursion
+        return getWords(words, raw_words, idx + 1, length);
     }
 
     public static void main(String[] args) throws IOException {
         HashMap<String, Integer> word_freq = new HashMap<>();
         List<String> stop_words = asList(new String(Files.readAllBytes(Paths.get("../stop_words.txt"))).split(","));
-        String raw_words = new String(Files.readAllBytes(Paths.get("../pride-and-prejudice.txt"))).toLowerCase();
+        String raw_words = new String(Files.readAllBytes(Paths.get(args[0]))).toLowerCase();
         List<String> words = new ArrayList<>();
 
         // Recursion
-        for(int i = 0; i < raw_words.length(); i += RECURSIVE_LIMIT + 1){
-            getWords(words, raw_words, i, i + RECURSIVE_LIMIT);
+        for(int i = 0; i < raw_words.length(); ){
+            i = getWords(words, raw_words, i, i + RECURSIVE_LIMIT);
         }
 
         // Recursion
-        for(int i = 0; i < raw_words.length(); i += RECURSIVE_LIMIT + 1){
+        for(int i = 0; i < raw_words.length(); i += RECURSIVE_LIMIT){
             count(words, i, i + RECURSIVE_LIMIT, stop_words, word_freq);
         }
 
