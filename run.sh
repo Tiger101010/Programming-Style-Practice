@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-MAX=3
+MAX=6
 for ((i = 1; i <= $MAX; ++i)) do
   echo "[$i] Run Exercise $i;"
 done
