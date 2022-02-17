@@ -15,7 +15,7 @@ public class Word2 implements IWord {
                     .split("[^a-zA-Z]+"))
                     .stream()
                     .filter(s -> !(stop_words.contains(s.toLowerCase()) || (s.length() < 2)))
-                    .filter(s -> s.contains("z"));
+                    .filter(s -> s.toLowerCase().contains("z"));
         } catch (IOException e) {
             e.printStackTrace();
             return null;

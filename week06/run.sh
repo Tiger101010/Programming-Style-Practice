@@ -8,8 +8,12 @@ for ((i = 1; i <= 2; ++i)) do
     if [[ $i == 1 ]]; then
         cd Twenty
         bash ./run.sh
+        cd ..
     elif [[ $i == 2 ]]; then
-        echo "2"
+        cd Twentysix
+        echo "Compile and Run..."
+        echo ""
+        java -cp sqlite-jdbc-3.36.0.3.jar Twentysix.java ../../pride-and-prejudice.txt
     fi
 
 
